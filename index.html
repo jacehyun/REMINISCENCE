@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RÉMINISCENCE</title>
+    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-loader" id="pageLoader">
+      <img
+        class="loader-title"
+        src="images/title.png"
+        alt="RÉMINISCENCE — loading"
+      />
+      <span class="loader-text">gathering memories...</span>
+      <div class="rewind-ripple"></div>
+    </div>
+    <div class="grain"></div>
+    <div id="configBanner"></div>
+
+    <div class="scene">
+      <header class="topbar">
+        <div class="brand">
+          <img
+            class="title-img"
+            src="images/title.png"
+            alt="RÉMINISCENCE — Moments Worth Remembering"
+          />
+        </div>
+        <nav class="mood-tabs" id="moodTabs">
+          <button class="tab active" data-mood="all">All</button>
+          <button class="tab" data-mood="happy">Happy</button>
+          <button class="tab" data-mood="calm">Calm</button>
+          <button class="tab" data-mood="sad">Sad</button>
+          <button class="tab" data-mood="excited">Excited</button>
+          <button class="tab" data-mood="nostalgic">Nostalgic</button>
+        </nav>
+        <div class="search-group">
+          <button
+            class="view-toggle"
+            id="viewToggleBtn"
+            title="View all memories"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+          </button>
+          <div class="search-wrap">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input id="searchInput" placeholder="Search memories..." />
+          </div>
+        </div>
+      </header>
+
+      <p class="side-note note-left">
+        The baddest b*tches are in tech
+      </p>
+      <p class="side-note note-quote">
+        Pwede magtanong... <br />
+        Never Grow Old?
+      </p>
+      <p class="side-note note-bottom">
+        Different people. Different stories♡
+      </p>
+      <p class="side-note note-bottom-left">
+        live, laugh, love, and reminisce
+      </p>
+
+      <div class="carousel-area">
+        <button class="nav-arrow left" id="prevBtn">
+          <img src="images/left-btn.png" alt="Previous" />
+        </button>
+        <div class="carousel" id="carousel"></div>
+        <button class="nav-arrow right" id="nextBtn">
+          <img src="images/right-btn.png" alt="Next" />
+        </button>
+      </div>
+
+      <div class="dots" id="dots"></div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <button class="add-memory-btn" id="addMemoryBtn">
+        <span class="icon-badge">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path d="M4 8h3l2-2h6l2 2h3v11H4z" />
+            <circle cx="12" cy="13" r="3.5" />
+          </svg>
+        </span>
+        <span class="add-copy">
+          <span class="add-title">Add a Memory</span>
+        </span>
+      </button>
+
+      <footer class="footer">
+        <span>Created By John Carlo C. Lacson</span>
+        <div class="music-player" id="musicPlayer">
+          <button
+            class="music-toggle"
+            id="musicToggle"
+            title="Play background music"
+            aria-label="Play background music"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon-play"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M6 4l14 8-14 8V4z" />
+            </svg>
+            <svg
+              class="icon-pause"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              style="display: none"
+            >
+              <rect x="5" y="4" width="5" height="16" />
+              <rect x="14" y="4" width="5" height="16" />
+            </svg>
+          </button>
+          <span class="music-credit">"Art of Life" by LesFM</span>
+        </div>
+        <audio id="bgAudio" src="music/art-of-life.mp3" loop preload="none"></audio>
+      </footer>
+    </div>
+
+    <!-- ---------- Add Memory Modal ---------- -->
+    <div class="modal-overlay" id="modalOverlay">
+      <form class="modal" id="memoryForm">
+        <h2>Add a Memory</h2>
+        <label for="photoInput">Photo</label>
+        <label class="photo-drop" for="photoInput" id="photoDrop">
+          <input type="file" id="photoInput" accept="image/*" required />
+          <img class="photo-drop-preview" id="photoPreview" alt="" />
+          <span class="photo-drop-placeholder" id="photoDropPlaceholder">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <path d="M4 8h3l2-2h6l2 2h3v11H4z" />
+              <circle cx="12" cy="13" r="3.5" />
+            </svg>
+            <span>Tap to add a photo</span>
+          </span>
+        </label>
+        <label for="captionInput">Caption</label>
+        <textarea
+          id="captionInput"
+          rows="2"
+          maxlength="120"
+          required
+          placeholder="another beautiful day in this crazy world"
+        ></textarea>
+        <label>Mood</label>
+        <div class="mood-pills" id="moodPills">
+          <button type="button" class="mood-pill active" data-mood="happy">Happy</button>
+          <button type="button" class="mood-pill" data-mood="calm">Calm</button>
+          <button type="button" class="mood-pill" data-mood="sad">Sad</button>
+          <button type="button" class="mood-pill" data-mood="excited">Excited</button>
+          <button type="button" class="mood-pill" data-mood="nostalgic">Nostalgic</button>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn">Cancel</button>
+          <button type="submit" id="submitBtn">Share Memory</button>
+        </div>
+        <p class="modal-status" id="modalStatus"></p>
+      </form>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

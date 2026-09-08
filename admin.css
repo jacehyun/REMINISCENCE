@@ -1,0 +1,374 @@
+/* =====================================================================
+   Admin panel styles. Assumes style.css is loaded first (uses its
+   :root variables, fonts, .grain, and body background).
+   ===================================================================== */
+
+.admin-body {
+  min-height: 100vh;
+}
+
+/* ---------- Shared "torn paper" card look (same mask as the main modal) ---------- */
+.admin-login-card,
+.admin-confirm-card {
+  background-color: transparent;
+  background-image: url("images/modalbg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url("images/modalbg.png");
+  mask-image: url("images/modalbg.png");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  color: var(--ink);
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.55));
+}
+
+/* ---------- Login screen ---------- */
+.admin-login {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.admin-login.open {
+  display: flex;
+}
+.admin-login-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+.admin-login-title {
+  width: 170px;
+  max-width: 60%;
+  margin: 0 auto 6px auto;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+.admin-login-card h2 {
+  font-family: "Caveat", cursive;
+  font-size: 26px;
+  margin: 0 0 6px 0;
+  text-shadow:
+    0 0 4px var(--cream),
+    0 0 8px var(--cream),
+    0 0 12px rgba(244, 239, 224, 0.8);
+}
+.admin-login-card label {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 4px;
+  text-shadow:
+    0 0 4px var(--cream),
+    0 0 8px var(--cream),
+    0 0 12px rgba(244, 239, 224, 0.8);
+}
+.admin-login-card input {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d8cfb8;
+  background: #fffdf8;
+  color: var(--ink);
+}
+.admin-login-card button {
+  margin-top: 12px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: none;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.admin-login-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.admin-status {
+  font-size: 13px;
+  min-height: 16px;
+  margin: 4px 0 0 0;
+  color: #4a6e2f;
+}
+.admin-status.error {
+  color: #a3402c;
+}
+
+/* ---------- Dashboard ---------- */
+.admin-dashboard {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.admin-dashboard.open {
+  display: flex;
+}
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 22px 48px 0 48px;
+}
+.admin-title-img {
+  width: 220px;
+  max-width: 50%;
+  height: auto;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+}
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.admin-user-email {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.admin-user-uid {
+  font-family: "DM Sans", monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(230, 224, 204, 0.14);
+  border: 1px solid rgba(246, 241, 230, 0.2);
+  border-radius: 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.admin-user-uid:hover {
+  border-color: var(--accent);
+  background: rgba(230, 224, 204, 0.22);
+}
+.admin-back-link {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--text-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(246, 241, 230, 0.4);
+  padding-bottom: 1px;
+}
+.admin-back-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.admin-signout-btn {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(246, 241, 230, 0.35);
+  background: rgba(230, 224, 204, 0.14);
+  color: var(--text-light);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.admin-signout-btn:hover {
+  border-color: var(--accent);
+  background: rgba(230, 224, 204, 0.22);
+}
+
+.admin-main {
+  flex: 1;
+  max-width: 780px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px 48px 60px 48px;
+}
+.admin-main-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.admin-main-heading h1 {
+  font-family: "Caveat", cursive;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-light);
+}
+.admin-count {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.admin-note {
+  font-family: "Caveat", cursive;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  border-left: 2px solid rgba(224, 180, 92, 0.5);
+  padding-left: 12px;
+  margin: 12px 0 26px 0;
+  max-width: 560px;
+}
+.admin-empty {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  color: var(--text-muted);
+}
+
+/* ---------- Memory rows ---------- */
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.admin-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--cream);
+  border-radius: 6px;
+  padding: 10px 14px;
+  box-shadow: 0 10px 24px var(--shadow);
+}
+.admin-row-photo {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(44, 38, 28, 0.35);
+}
+.admin-row-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.admin-row-info {
+  flex: 1;
+  min-width: 0;
+}
+.admin-row-caption {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: var(--ink);
+  margin: 0 0 3px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.admin-row-meta {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  color: #8b8270;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.admin-row-delete {
+  flex-shrink: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 18px;
+  border: 1px solid #b0503c;
+  background: transparent;
+  color: #a3402c;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.admin-row-delete:hover {
+  background: #a3402c;
+  color: #fff8ee;
+}
+
+/* ---------- Confirm delete modal ---------- */
+.admin-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 6, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: 20px;
+}
+.admin-confirm-overlay.open {
+  display: flex;
+}
+.admin-confirm-card {
+  width: 100%;
+  max-width: 320px;
+  padding: 26px 24px;
+  text-align: center;
+}
+.admin-confirm-card p {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  color: var(--ink);
+  margin: 0 0 16px 0;
+}
+.admin-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.admin-confirm-actions button {
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+}
+#confirmCancelBtn {
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+}
+#confirmDeleteBtn {
+  background: #a3402c;
+  color: #fff8ee;
+}
+#confirmDeleteBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .admin-topbar {
+    padding: 20px 20px 0 20px;
+  }
+  .admin-main {
+    padding: 24px 20px 40px 20px;
+  }
+  .admin-row {
+    flex-wrap: wrap;
+  }
+  .admin-row-delete {
+    margin-left: auto;
+  }
+}
