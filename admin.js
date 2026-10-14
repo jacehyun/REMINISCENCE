@@ -1,8 +1,3 @@
-/* =====================================================================
-   Admin panel — sign in with Firebase Auth, list memories from Firestore,
-   delete them. Uses the same Firebase project as script.js.
-   ===================================================================== */
-
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyC_bdhmhyMOA80ghkBl6_hkNFVclcQp1is",
   authDomain: "reminiscence-2211d.firebaseapp.com",
