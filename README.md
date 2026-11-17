@@ -6,7 +6,7 @@ Every memory lives on a hand-tilted polaroid you can flip through in a carousel,
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen) ![Stack](https://img.shields.io/badge/stack-vanilla%20JS-yellow) ![Backend](https://img.shields.io/badge/backend-Firebase-orange)
 
-## ✨ Features
+## Features
 
 - **Polaroid carousel** — memories drift in from either side with a soft tilt and depth fade, center card always in focus
 - **Full grid ("View All") mode** — toggle to see every memory at once, scrapbook-style
@@ -17,7 +17,7 @@ Every memory lives on a hand-tilted polaroid you can flip through in a carousel,
 - **Admin panel** (`admin.html`) — Firebase Auth–gated dashboard to review and delete memories, restricted to a single admin UID via Firestore security rules
 - Fully responsive, works as a static site with **zero backend/server code**
 
-## 🛠 Tech stack
+## Tech stack
 
 - Vanilla HTML / CSS / JavaScript — no framework, no build step
 - **Firebase Firestore** — memory data, realtime updates via `onSnapshot`
@@ -25,7 +25,7 @@ Every memory lives on a hand-tilted polaroid you can flip through in a carousel,
 - **Cloudinary** — unsigned image upload/hosting for submitted photos
 - Google Fonts (Caveat, DM Sans, Indie Flower)
 
-## 📂 Project structure
+## Project structure
 
 ```
 ├── index.html          # Main site
@@ -38,11 +38,11 @@ Every memory lives on a hand-tilted polaroid you can flip through in a carousel,
 └── music/                     # Background track
 ```
 
-## 🎵 Credits
+## Credits
 
 - Background music: *"Art of Life"* by LesFM
 
-## 👤 Author
+## Author
 
 Created by **John Carlo C. Lacson** — Platform Technologies, 4th Year
 
